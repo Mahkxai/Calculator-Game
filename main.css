@@ -1,3 +1,9 @@
+/* ISSUE: inner border getting cut by div fixed by modfying div border radius*/
+
+* {
+    font-family: 'JetBrains Mono';font-size: 22px;
+}
+
 .flex-container {
     display: flex;
     flex-flow: row wrap;
@@ -9,12 +15,12 @@
     border-radius: 8px;
 }
 
-.flex-item {
-    flex: 1 calc(33.33% - 10px); 
+.flex-item, .numpad {
+    flex: 1 calc(25% - 10px); 
 }
 
-.flex-item button {
-    background-color: #007bff;
+.flex-container button {
+    background-color: #964B00;
     color: aliceblue;
     cursor: pointer;
 
@@ -27,24 +33,51 @@
     border-radius: 8px;
 }
 
-.flex-item:first-child {
-    flex: 1 100%;
-    flex-direction: column;
+.numpad button {
+    background-color:  goldenrod;
 }
 
-#input > textarea {
-    resize: none; /* Prevent resizing of the textarea */
-    box-sizing: border-box;  /* Makes width include border and padding */
+#eq {
+    background-color: black;
+}
 
-    /* Screen sizing: 5, 12, 5, 48, 5 */
-    height: 75px;
+#lcd {
+    display: flex;
+    flex-direction: column;
+    flex: 1 100%;
+    
+    height: 120px;
     width: 100%;
-    padding: 22px 0 0 0;
+
+    box-sizing: border-box;
+    border: 2px solid skyblue;
+    border-radius: 8px;
+}
+
+#prev-result {
+    background-color: lightgray;
+    padding: 5px;
+    margin: 0;
+
+    text-align: left;
+
+    border-radius: 6px 6px 0 0;
+}
+
+#output {
+    background-color: aliceblue;
+    resize: none; /* Prevent resizing of the textarea */
+    overflow: hidden;
+
+    width: 100%;
+    padding: 5px;
     margin: 0;
 
     font-size: 48px;
     text-align: right;
 
-    border: 2px solid skyblue;
-    border-radius: 8px;
+    box-sizing: border-box;  /* Makes width include border and padding */
+    border: none;
+    border-radius: 0 0 8px 8px;
 }
+
