@@ -1,26 +1,50 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .flex-container {
-    margin: 0 auto;
     display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
     
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    padding: 10px;
+
+    border: 8px solid navy;
+    border-radius: 8px;
 }
 
 .flex-item {
-    padding: 5px;
-    text-align: center;
-    border: 1px solid black;
-
-    flex: 1 0 30%;
+    flex: 1 calc(33.33% - 10px); 
 }
 
-.flex-item #ten {
-    background: gold;
+.flex-item button {
+    background-color: #007bff;
+    color: aliceblue;
+    cursor: pointer;
+
+    width: 100%;
+    padding: 50px;
+
+    font-size: 48px;
+
+    border: 2px solid skyblue;
+    border-radius: 8px;
+}
+
+.flex-item:first-child {
+    flex: 1 100%;
+    flex-direction: column;
+}
+
+#input > textarea {
+    resize: none; /* Prevent resizing of the textarea */
+    box-sizing: border-box;  /* Makes width include border and padding */
+
+    /* Screen sizing: 5, 12, 5, 48, 5 */
+    height: 75px;
+    width: 100%;
+    padding: 22px 0 0 0;
+    margin: 0;
+
+    font-size: 48px;
+    text-align: right;
+
+    border: 2px solid skyblue;
+    border-radius: 8px;
 }
