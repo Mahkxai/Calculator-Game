@@ -1,20 +1,26 @@
-html, body {
-    height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .flex-container {
-    background-color: #333;
-    min-height: 100%;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .flex-item {
-    border: 1px solid #000;
-    color: blanchedalmond;
-    background-color: chocolate;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid black;
 
-    flex-basis: 40px;
+    flex: 1 0 30%;
+}
+
+.flex-item #ten {
+    background: gold;
 }

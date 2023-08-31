@@ -229,4 +229,3 @@ console.log(demoObj.name);
 const numArr = [4, 6, -7, 8, 9, 0];
 const squaredList = arr => arr.filter(num => Number.isInteger(num) && num > 0).map(x => x*x);
 console.log(squaredList(numArr));
-
