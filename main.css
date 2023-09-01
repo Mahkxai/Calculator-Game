@@ -1,26 +1,33 @@
 /* ISSUE: inner border getting cut by div fixed by modfying div border radius*/
 
+:root {
+    --spacing: 20px;
+    --inner-border-color: gold;
+}
+
 * {
     font-family: 'JetBrains Mono';font-size: 22px;
 }
 
 .flex-container {
+    background-color: black;
+    
     display: flex;
     flex-flow: row wrap;
-    gap: 10px;
+    justify-content: space-around;
+    gap: var(--spacing, 10px);
     
-    padding: 10px;
+    padding: var(--spacing, 10px);
 
-    border: 8px solid navy;
+    border: 8px solid goldenrod;
     border-radius: 8px;
 }
 
 .flex-item {
-    flex: 1 calc(25% - 10px); 
+    flex: 1 calc(25% - var(--spacing, 10px)); 
 }
 
 .numpad {
-    background-color: #964B00;
     color: aliceblue;
     cursor: pointer;
 
@@ -29,12 +36,16 @@
 
     font-size: 48px;
 
-    border: 2px solid skyblue;
+    border: 2px solid var(--inner-border-color);
     border-radius: 8px;
 }
 
-.numpad:hover {
-    background-color: #773D00;
+.numpad.op {
+    background-color: black;
+}
+
+.numpad.op:hover {
+    background-color: #333333;
 }
 
 .numpad.num {
@@ -45,12 +56,37 @@
     background-color: #AD9108;
 }
 
+.numpad:disabled {
+    background-color: lightgray;
+    border-color: red;
+    color: red;
+    cursor: not-allowed;
+}
+
+.numpad:disabled:hover {
+    background-color: lightgray;
+    border-color: red;
+    color: red;
+}
+
+#ac {
+    background-color: maroon;
+}
+
+#del {
+    background-color: maroon;
+}
+
 #eq {
     background-color: black;
 }
 
 #eq:hover {
     background-color: #333333;
+}
+
+#del {
+    min-height: 100%;
 }
 
 #lcd {
@@ -62,7 +98,7 @@
     width: 100%;
 
     box-sizing: border-box;
-    border: 2px solid skyblue;
+    border: 2px solid var(--inner-border-color);
     border-radius: 8px;
 }
 
@@ -93,6 +129,5 @@
 
     box-sizing: border-box;  /* Makes width include border and padding */
     border: none;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 6px 6px;
 }
-
