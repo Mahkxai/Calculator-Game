@@ -15,11 +15,11 @@
     border-radius: 8px;
 }
 
-.flex-item, .numpad {
+.flex-item {
     flex: 1 calc(25% - 10px); 
 }
 
-.flex-container button {
+.numpad {
     background-color: #964B00;
     color: aliceblue;
     cursor: pointer;
@@ -33,12 +33,24 @@
     border-radius: 8px;
 }
 
-.numpad button {
+.numpad:hover {
+    background-color: #773D00;
+}
+
+.numpad.num {
     background-color:  goldenrod;
+}
+
+.numpad.num:hover {
+    background-color: #AD9108;
 }
 
 #eq {
     background-color: black;
+}
+
+#eq:hover {
+    background-color: #333333;
 }
 
 #lcd {
