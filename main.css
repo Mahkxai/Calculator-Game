@@ -38,6 +38,16 @@
 
     border: 2px solid var(--inner-border-color);
     border-radius: 8px;
+
+    transition: transform 0.3s; /* Add a transition for a smooth effect */
+}
+
+.numpad:hover {
+    transform: scale(1.1); /* Increase the size by 20% */
+}
+
+.numpad:active {
+    transform: scale(0.9);
 }
 
 .numpad.op {
@@ -57,14 +67,15 @@
 }
 
 .numpad:disabled {
-    background-color: lightgray;
+    background-color: #444;
     border-color: red;
     color: red;
     cursor: not-allowed;
+    animation-play-state: paused;
 }
 
 .numpad:disabled:hover {
-    background-color: lightgray;
+    background-color: #444;
     border-color: red;
     color: red;
 }
@@ -73,16 +84,25 @@
     background-color: maroon;
 }
 
+#ac:hover {
+    background-color: red;;
+}
+
 #del {
     background-color: maroon;
 }
 
+#del:hover {
+    background-color: red;
+}
+
 #eq {
-    background-color: black;
+    background-color: white;
+    color: goldenrod;
 }
 
 #eq:hover {
-    background-color: #333333;
+    background-color: #ddd;
 }
 
 #del {
