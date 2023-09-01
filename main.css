@@ -66,20 +66,23 @@
     border-radius: 8px;
 }
 
+#lcd > textarea {
+    resize: none; /* Prevent resizing of the textarea */
+    overflow: hidden;
+}
+
 #prev-result {
     background-color: lightgray;
     padding: 5px;
     margin: 0;
 
-    text-align: left;
+    text-align: right;
 
     border-radius: 6px 6px 0 0;
 }
 
 #output {
     background-color: aliceblue;
-    resize: none; /* Prevent resizing of the textarea */
-    overflow: hidden;
 
     width: 100%;
     padding: 5px;
