@@ -1,0 +1,160 @@
+/* ISSUE: inner border getting cut by div fixed by modfying div border radius*/
+
+:root {
+    --spacing: 20px;
+    --inner-border-color: gold;
+}
+
+* {
+    font-family: 'JetBrains Mono';
+    font-size: 22px;
+}
+
+.flex-container {
+    background-color: black;
+    overflow: scroll;
+    height: 80vh;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: var(--spacing, 10px);
+    
+    padding: var(--spacing, 10px);
+
+    border: 8px solid goldenrod;
+    border-radius: 8px;
+}
+
+.flex-item {
+    flex: 1 calc(25% - var(--spacing, 10px)); 
+}
+
+.numpad {
+    color: aliceblue;
+    cursor: pointer;
+
+    height: 100%;
+    /* height: calc(80vh / 6 - var(--spacing) - 10px); */
+    width: 100%;
+
+    font-size: 48px;
+
+    border: 2px solid var(--inner-border-color);
+    border-radius: 8px;
+
+    transition: transform 0.3s; /* Add a transition for a smooth effect */
+}
+
+.numpad:hover {
+    transform: scale(1.05); /* Increase the size by 20% */
+}
+
+.numpad:active {
+    transform: scale(0.95);
+}
+
+.numpad.op {
+    background-color: black;
+}
+
+.numpad.op:hover {
+    background-color: #333333;
+}
+
+.numpad.num {
+    background-color:  goldenrod;
+}
+
+.numpad.num:hover {
+    background-color: #AD9108;
+}
+
+.numpad:disabled {
+    background-color: #fff;
+ 
+    opacity: 0.5;
+   
+    color: red;
+    border-color: black;
+
+    cursor: not-allowed;
+    
+    transform: none;
+}
+
+.numpad:disabled:hover {
+    background-color: #FFF;
+    opacity: 0.3;
+    border-color: red;
+    color: red;
+}
+
+#ac {
+    background-color: maroon;
+}
+
+#ac:hover {
+    background-color: red;;
+}
+
+#del {
+    background-color: maroon;
+}
+
+#del:hover {
+    background-color: red;
+}
+
+#eq {
+    background-color: white;
+    color: goldenrod;
+}
+
+#eq:hover {
+    background-color: #ddd;
+}
+
+#lcd {
+    display: flex;
+    flex-direction: column;
+    flex: 100%; 
+
+    /* height: 10%; */
+    /* height: calc(80vh / 6 - var(--spacing) - 10px); */
+    width: 100%;
+
+    box-sizing: border-box;
+    border: 2px solid var(--inner-border-color);
+    border-radius: 8px;
+}
+
+#lcd > div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+    padding-right: 10px;
+    
+    color: #999;
+}
+
+#output {
+    background-color: lightgray;
+    flex: 1;
+
+    text-align: right;
+    font-size: 24px;
+
+    border-radius: 6px 6px 0 0;
+}
+
+#screen {
+    background-color: aliceblue;
+    flex: 2;
+
+    text-align: right;
+    font-size: 48px;
+
+    border-radius: 0 0 6px 6px;
+}
