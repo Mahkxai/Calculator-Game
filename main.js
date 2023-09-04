@@ -62,8 +62,11 @@ operator.forEach(button => {
                 init();
                 break;
             case "backspace":
-                num[i] = num[i].slice(0,-1);
-                scrn.textContent = scrn.textContent.slice(0, -1);
+                if (!num.every(element => element === "")) { 
+                    num[i] = num[i].slice(0,-1);
+                    scrn.textContent = scrn.textContent.slice(0, -1);
+                    if (scrn.textContent === "") init(true);
+                } 
                 break;
             default:
                 if (scrn.textContent === "0") break;
