@@ -87,6 +87,7 @@ operator.forEach(button => {
                     if (currOp === "=") {
                         output.textContent = num[i];
                         init(true);
+                        break;
                     } else scrn.textContent += " " + currOp + " ";
                 }
 
@@ -96,8 +97,6 @@ operator.forEach(button => {
                 //     scrn.textContent = scrn.textContent.slice(0, -2) + currOp;
                 //     break;
                 // } else numStack.push(num[i]);
-
-              
 
                 let oldi = i;
                 i = (i+1) % 2;  // cycling variable for input number
