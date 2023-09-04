@@ -1,23 +1,11 @@
 // TODO: DEL testcases
 
-// Prevent keyboard input
+// // Prevent keyboard input
 // document.addEventListener("keydown", function(event) {
 //     event.preventDefault(); 
 // });
 
-// const textarea = document.getElementById("screen");
 
-// // Function to update the textarea's height based on its content
-// function adjustTextareaHeight() {
-//     textarea.style.height = 'auto'; // Reset the height to auto
-//     textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to the scrollHeight
-// }
-  
-// // Attach an event listener to the textarea to trigger the adjustment on input
-// textarea.addEventListener('input', adjustTextareaHeight);
-
-// // Initial adjustment when the page loads (if there's pre-filled content)
-// adjustTextareaHeight();
 
 //Initialization
 const numpad = document.querySelectorAll(".numpad.num");
