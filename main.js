@@ -1,26 +1,44 @@
 // TODO: DEL testcases
 
 // Prevent keyboard input
-document.addEventListener("keydown", function(event) {
-    event.preventDefault(); 
-});
+// document.addEventListener("keydown", function(event) {
+//     event.preventDefault(); 
+// });
+
+// const textarea = document.getElementById("screen");
+
+// // Function to update the textarea's height based on its content
+// function adjustTextareaHeight() {
+//     textarea.style.height = 'auto'; // Reset the height to auto
+//     textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to the scrollHeight
+// }
+  
+// // Attach an event listener to the textarea to trigger the adjustment on input
+// textarea.addEventListener('input', adjustTextareaHeight);
+
+// // Initial adjustment when the page loads (if there's pre-filled content)
+// adjustTextareaHeight();
 
 //Initialization
 const numpad = document.querySelectorAll(".numpad.num");
 const operator = document.querySelectorAll(".numpad.op");
-const output = document.getElementById("prev-result");
-const calc = document.getElementById("output");
-const num = ["", ""];
-let i, result, prevOp, on;
+const output = document.getElementById("output");
+const scrn = document.getElementById("screen");
+const num = ["",""];   // cycle between inputs
+const opStack = [];
+const numStack = [];
+let i, result, prevOp, opCount;
 
-function init() {
-    calc.value = "";
-    output.value = "";
-    num.fill("");
+function init(equals = false) {
+    if (!equals) output.textContent = "...";
+    scrn.textContent = "0";
+    scrn.style.color = "#999"
+    num.fill("");   // cycle between inputs
+    opStack.length = 0;
+    numStack.length = 0;
     i = 0;
     result = 0;
     prevOp = "";
-    on = false;
 }
 init();
 
@@ -28,32 +46,28 @@ init();
 numpad.forEach(button => {
     button.addEventListener('click', () => {
         const input = button.textContent;
-        console.log(num[i], input);
+
+        if (num.every(element => element === "")) {
+            scrn.style.color = "black";
+            scrn.textContent = "";
+        }
+
         num[i] += input;
-        calc.value += input;
+        scrn.textContent += input;
+        opCount = 0;
     });
 });
 
 // Parsing operators
-// process: empty -> val op val op -> result op val op -> result op val op -> result
-/*
-    LOGIC
-    If empty screen:
-        operators are disabled
-*/
-
 operator.forEach(button => {
     button.addEventListener('click', () => {
-        const op = button.textContent;
-        console.log(`Operator clicked: ${op}`);
-        
-        switch(op) {
+        const currOp = button.textContent;
+        opCount++;
+        switch(currOp) {
             case ".":
                 // temporary console logger
-                console.log(`Current Num: ${num[i]}\n`, 
-                    `Next Num: ${num[(i+1) % 2]}\n`,
-                    `On: ${on}\n`,
-                    `prevOp: ${prevOp}\n`
+                console.log(
+                        opStack, numStack
                 );
                 break;
             case "AC":
@@ -61,19 +75,44 @@ operator.forEach(button => {
                 break;
             case "backspace":
                 num[i] = num[i].slice(0,-1);
-                calc.value = calc.value.slice(0, -1);
+                scrn.textContent = scrn.textContent.slice(0, -1);
                 break;
-            case "=":
             default:
-                if (calc.value === "") break;
-
-                calc.value += " " + op + " ";
-                let oldi = i;
-                i = (i+1) % 2;
+                if (scrn.textContent === "0") break;
+             
+                opStack.push(currOp);
                 
-                if (!on) {
-                    prevOp = op;
-                    on = true;
+                if (opCount > 1) {
+                    let currOp = opStack.pop();
+                    prevOp = currOp;
+                    opStack[opStack.length - 1] = currOp;
+                    scrn.textContent = scrn.textContent.slice(0, -2) + currOp + " ";
+                    break;
+                }
+
+                numStack.push(num[i])
+
+                if (opStack.length === 1) {
+                    if (currOp === "=") {
+                        output.textContent = num[i];
+                        init(true);
+                    } else scrn.textContent += " " + currOp + " ";
+                }
+
+                // if (opStack.length > numStack.length) {
+                //     let currOp = opStack.pop();
+                //     opStack[opStack.length - 1] = currOp;
+                //     scrn.textContent = scrn.textContent.slice(0, -2) + currOp;
+                //     break;
+                // } else numStack.push(num[i]);
+
+              
+
+                let oldi = i;
+                i = (i+1) % 2;  // cycling variable for input number
+
+                if (opStack.length === 1) {
+                    prevOp = currOp;
                 } else {
                     switch(prevOp) {
                         case "/":
@@ -90,17 +129,18 @@ operator.forEach(button => {
                             break;
                     }
 
-                    prevOp = op;
+                    // changing states for next calculation
+                    prevOp = currOp;
                     num[oldi] = result;
                     num[i] = "";
 
-                    if (op === "=") {
-                        output.value = result;
-                        num[i] = result;
-                        num[oldi] = "";
-                        calc.value = "";
+                    if (currOp === "=") {
+                        output.textContent = result;
+                        init(true);
                     } else {
-                        calc.value = Number(result.toFixed(4)) + " " + prevOp + " ";
+                        scrn.textContent = "(" + scrn.textContent + ")" + " " + currOp + " ";
+                        console.log(result);
+                        output.textContent = result;
                     }
                 }  
         }

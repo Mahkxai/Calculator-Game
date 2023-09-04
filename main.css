@@ -12,9 +12,8 @@
 
 .flex-container {
     background-color: black;
-    overflow: hidden;
-    
-    max-height: 80vh;
+    overflow: scroll;
+    height: 80vh;
 
     display: flex;
     flex-flow: row wrap;
@@ -35,9 +34,9 @@
     color: aliceblue;
     cursor: pointer;
 
-    height: calc(80vh / 6 - var(--spacing) - 10px);
+    height: 100%;
+    /* height: calc(80vh / 6 - var(--spacing) - 10px); */
     width: 100%;
-    padding: auto;
 
     font-size: 48px;
 
@@ -116,16 +115,13 @@
     background-color: #ddd;
 }
 
-#del {
-    min-height: 100%;
-}
-
 #lcd {
     display: flex;
     flex-direction: column;
-    flex: 1 100%;
-    
-    height: calc(80vh / 6 - var(--spacing) - 10px);
+    flex: 100%; 
+
+    /* height: 10%; */
+    /* height: calc(80vh / 6 - var(--spacing) - 10px); */
     width: 100%;
 
     box-sizing: border-box;
@@ -133,32 +129,32 @@
     border-radius: 8px;
 }
 
-#lcd > textarea {
-    resize: none; /* Prevent resizing of the textarea */
-    overflow: hidden;
+#lcd > div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+    padding-right: 10px;
+    
+    color: #999;
 }
 
-#prev-result {
+#output {
     background-color: lightgray;
-    padding: 5px;
-    margin: 0;
+    flex: 1;
 
     text-align: right;
+    font-size: 24px;
 
     border-radius: 6px 6px 0 0;
 }
 
-#output {
+#screen {
     background-color: aliceblue;
-    
-    width: 100%;
-    padding: auto;
-    margin: 0;
+    flex: 2;
 
-    font-size: 48px;
     text-align: right;
+    font-size: 48px;
 
-    box-sizing: border-box;  /* Makes width include border and padding */
-    border: none;
     border-radius: 0 0 6px 6px;
 }
