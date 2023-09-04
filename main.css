@@ -72,11 +72,15 @@
 }
 
 .numpad:disabled {
-    background-color: #AAA;
-    border-color: red;
+    background-color: #fff;
+ 
     opacity: 0.5;
-    color: black;
+   
+    color: red;
+    border-color: black;
+
     cursor: not-allowed;
+    
     transform: none;
 }
 
