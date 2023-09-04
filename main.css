@@ -14,7 +14,7 @@
     background-color: black;
     overflow: hidden;
     
-    max-height: 100vh;
+    max-height: 80vh;
 
     display: flex;
     flex-flow: row wrap;
@@ -35,7 +35,7 @@
     color: aliceblue;
     cursor: pointer;
 
-    height: calc(16.67vh - var(--spacing));
+    height: calc(80vh / 6 - var(--spacing) - 10px);
     width: 100%;
     padding: auto;
 
@@ -48,7 +48,7 @@
 }
 
 .numpad:hover {
-    transform: scale(1.1); /* Increase the size by 20% */
+    transform: scale(1.05); /* Increase the size by 20% */
 }
 
 .numpad:active {
@@ -72,15 +72,17 @@
 }
 
 .numpad:disabled {
-    background-color: #444;
+    background-color: #AAA;
     border-color: red;
-    color: red;
+    opacity: 0.5;
+    color: black;
     cursor: not-allowed;
-    animation-play-state: paused;
+    transform: none;
 }
 
 .numpad:disabled:hover {
-    background-color: #444;
+    background-color: #FFF;
+    opacity: 0.3;
     border-color: red;
     color: red;
 }
@@ -119,7 +121,7 @@
     flex-direction: column;
     flex: 1 100%;
     
-    height: calc(16.67vh - var(--spacing));
+    height: calc(80vh / 6 - var(--spacing) - 10px);
     width: 100%;
 
     box-sizing: border-box;
